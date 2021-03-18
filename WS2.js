@@ -100,11 +100,13 @@ function fRequest() {
                 let output = "";
                 if (schedule.status == 0) {
                     //Special Train Service
-                    console.log("special train service");
+                    output += schedule.message;
+                    if (schedule.url)
+                        output += `<br><a href='${schedule.url}'>${schedule.url}</a>`;
                 } else {
                     if (schedule.isdelay == "Y") {
                         //Data Absence
-                        console.log("data absence");
+                        output = "No data is available";
                     } else {
                         //Normal response
                         let dataUP = schedule.data[line + "-" + station].UP;
